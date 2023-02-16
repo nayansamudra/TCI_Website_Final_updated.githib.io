@@ -77,6 +77,7 @@ function SendOtp() {
     console.log("phone: ", phone)
     console.log("phone_number: ", phone_number)
 
+    console.log("sendOTP_via_resend", sendOTP_via_resend)
     $.post(api_leads_url + "/send_otp", { name: name, phone: phone }, function (data, status) {
         console.log("Data: " + data + "\nStatus: " + status);
         if (data == "202") {
@@ -87,32 +88,40 @@ function SendOtp() {
             $('#Modal_5').removeClass().addClass('container d-none d-flex justify-content-center align-items-center')               // Modal 5
             $('#Modal_6').removeClass().addClass('container d-none d-flex justify-content-center align-items-center')               // Modal 6
             global_otp_ct += 1
+            console.log("global_otp_ct = ", global_otp_ct)
             // lock
             $('#send_btn').off()
             $('#resend_btn').off()
             if (global_otp_ct >= 2) {
                 $("#ph_msg").text("")
                 $("#msg_text_for_otp").show()
-                $("#resend_btn").attr('disabled', 'disabled')
                 $("#ph_msg").text("OTP sent on Whatsapp, Try again after 1 Minute")
                 setTimeout(() => {
                     $("#msg_text_for_otp").hide()
                 }, 10000);
-                setTimeout(function () {
-                    $("#resend_btn").removeAttr('disabled')
-                    $("#send_btn").click(function () {
+                $("#resend_btn").click(function () {
+                    console.log("u r inside If --> resend")
+                    console.log("sendOTP_via_resend",sendOTP_via_resend)
+                    if(sendOTP_via_resend == false){
                         SendOtp()
-                    })
-                    $("#resend_btn").click(function () {
-                        SendOtp()
-                    })
-                }, 30000);
+                        sendOTP_via_resend = true
+                        setTimeout(() => {
+                            sendOTP_via_resend = false
+                            console.log("sendOTP_via_resend",sendOTP_via_resend)
+                        }, 30000);
+                    }
+                })
             }
             else {
-                $("#send_btn").click(function () {
-                    SendOtp()
-                })
+                console.log("u r inside ELSE")
                 $("#resend_btn").click(function () {
+                    console.log("u r inside ELSE --> Resend")
+                    sendOTP_via_resend = true
+                    console.log("sendOTP_via_resend = ", sendOTP_via_resend)
+                    setTimeout(() => {
+                        sendOTP_via_resend = false
+                        console.log("sendOTP_via_resend",sendOTP_via_resend)
+                    }, 30000);
                     SendOtp()
                 })
             }
@@ -131,7 +140,7 @@ function SendOtp() {
             $('#Modal_6').removeClass().addClass('container d-none d-flex justify-content-center align-items-center')               // Modal 6
             // lock
             $('#send_btn').off()
-           $("#submit_btn").click(function () {
+            $("#submit_btn").click(function () {
                 submit_lead_form()
             })
         }
@@ -286,20 +295,21 @@ $('.btn-close').click(function () {
 
 $(document).ready(function () {
 
-    // console.log = function () { };
+    console.log = function () { };
 
-
-
-    $('img').attr("oncontextmenu","return false;")
+    $('img').attr("oncontextmenu", "return false;")
 
     global_otp_ct = 0
 
-    api_leads_url = "https://tcistudents.com/leads"
+    sendOTP_via_resend = false
     global_email_valid = false
+
+    api_leads_url = "https://tcistudents.com/leads"
+
     // css fix
     $(".rm_maxh").css("max-height", "initial")
 
-    $("#send_btn").click(function () {
+    $('#send_btn').click(function () {
         SendOtp()
     })
 
@@ -325,19 +335,19 @@ $(document).ready(function () {
         $('html').css('overflow', 'hidden');
         window.location.hash = "modal";
     })
-    .on('hidden.bs.modal', function () {
-        $('html').attr('style','overflow-x:hidden !important; overflow-y:auto !important')
-        $('body').attr('style','overflow-x:hidden !important; overflow-y:auto !important')
-    })
+        .on('hidden.bs.modal', function () {
+            $('html').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
+            $('body').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
+        })
 
     $(window).on('hashchange', function (event) {
-        if(window.location.hash != "#modal") {
+        if (window.location.hash != "#modal") {
             $('#GetFreeCounseling').modal('hide');
         }
-    });   
+    });
 
     $(window).on('hashchange', function (event) {
-        if(window.location.hash != "#modal_1") {
+        if (window.location.hash != "#modal_1") {
             $('#Tredcode_Modal').modal('hide');
         }
     });
@@ -347,9 +357,9 @@ $(document).ready(function () {
         $('html').css('overflow', 'hidden')
         window.location.hash = "modal_1";
     })
-    .on('hidden.bs.modal', function () {
-        console.log('tredcode_modal is close')
-        $('html').attr('style','overflow-x:hidden !important; overflow-y:auto !important')
-        $('body').attr('style','overflow-x:hidden !important; overflow-y:auto !important')
-    })
+        .on('hidden.bs.modal', function () {
+            console.log('tredcode_modal is close')
+            $('html').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
+            $('body').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
+        })
 });
