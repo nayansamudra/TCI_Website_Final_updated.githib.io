@@ -128,7 +128,10 @@ function SendOtp() {
 
             // enable evt listner
             $("#validate_btn").click(function () {
-                verify_otp()
+                if(verify_otp_counter == 0){
+                    verify_otp()
+                    verify_otp_counter = 1
+                }
             })
         }
         else if (data == "phone_registered_form_remain") {
@@ -142,7 +145,10 @@ function SendOtp() {
             $('#send_btn').off()
             $("#submit_btn").click(function () {
                 console.log('submit form called INSIDE SEND OTP')
-                submit_lead_form()
+                if(submit_lead_form_counter == 0){
+                    submit_lead_form()
+                    submit_lead_form_counter = 1
+                }
             })
         }
         else if (data == "phone_already_registered") {
@@ -176,13 +182,14 @@ const verify_otp = () => {
     $("#msg_text_for_otp").show()
     $.post(api_leads_url + "/verify_otp", { otp: otp }, function (data, status) {
         console.log("Data: " + data + "\nStatus: " + status);
-        data = 'success'
         if (data == "success") {
-
             $("#submit_btn").removeClass("temp_disb")
             $("#submit_btn").click(function () {
                 console.log('submit form called INSIDE VERIFY OTP')
-                submit_lead_form()
+                if(submit_lead_form_counter == 0){
+                    submit_lead_form()
+                    submit_lead_form_counter = 1
+                }
             })
             $("#ph_msg").text("OTP Verified")
             $("#verify_otp_btn").off()
@@ -299,6 +306,7 @@ $('.btn-close').click(function () {
 $(document).ready(function () {
 
     // console.log = function () { };
+    $.ajaxSetup({ async: false }); // to stop async
 
     $('img').attr("oncontextmenu", "return false;")
 
@@ -307,20 +315,28 @@ $(document).ready(function () {
     sendOTP_via_resend = false
     global_email_valid = false
 
+    verify_otp_counter = submit_lead_form_counter = 0
+
     api_leads_url = "https://tcistudents.com/leads"
 
     // css fix
     $(".rm_maxh").css("max-height", "initial")
 
     $('#send_btn').click(function () {
+        console.log(' u click on send otp ')
         SendOtp()
     })
 
     $('#GetFreeCounseling').on('hidden.bs.modal', function () {
         console.log("Modal is close")
         global_otp_ct = 0
+        verify_otp_counter = 0
+        submit_lead_form_counter = 0
         sendOTP_via_resend = false
         global_email_valid = false
+        console.log("global_otp_ct",global_otp_ct)
+        console.log("sendOTP_via_resend",sendOTP_via_resend)
+        console.log("global_email_valid",global_email_valid)
         $('#Send_OTP_Modal').removeClass().addClass('container d-flex justify-content-center align-items-center')
         $('#Validate_OTP_Modal').removeClass().addClass('container d-none d-flex justify-content-center align-items-center')
         $('#User_Details_Modal').removeClass().addClass('container d-none d-flex justify-content-center align-items-center')
