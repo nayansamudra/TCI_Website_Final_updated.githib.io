@@ -14,8 +14,10 @@
     <meta name="twitter:title" content="TCI - Trading Cafe India | Best online Trade learning Program">
 
     <meta name="description" content="STOCK MARKET PROGRAM TO GENERATE CONSISTENT INCOME THROUGH TRADING AND INVESTING">
-    <meta property="og:description" content="Learn how to trade in simple and profitable way using our proven strategies and advanced tools">
-    <meta name="twitter:description" content="Learn how to trade in simple and profitable way using our proven strategies and advanced tools">
+    <meta property="og:description"
+        content="Learn how to trade in simple and profitable way using our proven strategies and advanced tools">
+    <meta name="twitter:description"
+        content="Learn how to trade in simple and profitable way using our proven strategies and advanced tools">
 
     <meta property="og:image" content="https://tradingcafeindia.com/wp-content/uploads/2022/01/logo.png">
     <meta name="twitter:image" content="https://tradingcafeindia.com/wp-content/uploads/2022/01/logo.png">
@@ -166,6 +168,114 @@
         @media (min-width: 470px) {
             #mobile_heading {
                 font-size: xx-large !important;
+            }
+        }
+
+        /* play button design */
+
+        .video-play-button {
+            position: absolute;
+            z-index: 10;
+            top: 55%;
+            left: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            -webkit-box-sizing: content-box;
+            box-sizing: content-box;
+            display: block;
+            border-radius: 50%;
+            border: none;
+            outline: none;
+        }
+
+        @media (max-width: 1199px) {
+            .video-play-button {
+                left: 40%;
+            }
+        }
+
+        .video-play-button i {
+            color: #324ed4;
+            position: relative;
+            z-index: 99;
+            font-size: 40px;
+            top: 1px;
+            left: 1px;
+        }
+
+        .video-play-button i:after {
+            width: 70%;
+            height: 70%;
+            content: "";
+            background-color: transparent;
+            border-radius: 100%;
+            position: absolute;
+            left: 4px;
+            right: 0px;
+            z-index: -1;
+        }
+
+        .video-play-button:before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            display: block;
+            width: 80px;
+            height: 80px;
+            background: #324ed4;
+            background: #afbdfa;
+            border-radius: 50%;
+            -webkit-animation: pulse-border 1500ms ease-out infinite;
+            animation: pulse-border 1500ms ease-out infinite;
+        }
+
+        .video-play-button:after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+            display: block;
+            width: 80px;
+            height: 80px;
+            background: #324ed4;
+            background: #afbdfa;
+            border-radius: 50%;
+            -webkit-transition: all 200ms;
+            transition: all 200ms;
+        }
+
+        @-webkit-keyframes pulse-border {
+            0% {
+                -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(2);
+                transform: translateX(-50%) translateY(-50%) translateZ(0) scale(2);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse-border {
+            0% {
+                -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                transform: translateX(-50%) translateY(-50%) translateZ(0) scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                -webkit-transform: translateX(-50%) translateY(-50%) translateZ(0) scale(2);
+                transform: translateX(-50%) translateY(-50%) translateZ(0) scale(2);
+                opacity: 0;
             }
         }
     </style>
@@ -415,6 +525,10 @@
                             <span class="material-icons d-flex align-items-center">
                                 <i class="fa-solid fa-play"></i>
                             </span>
+                            <!-- <button type="button" class="video-play-button" data-toggle="modal"
+                            data-target="#coursesVideoPopup">
+                            <i class="fa-solid fa-circle-play"></i>
+                            </button> -->
                         </div>
                         <iframe style="display: none;" class="Laptop_Video_iframe" src="" title="YouTube video player"
                             frameborder="0"
@@ -1859,8 +1973,7 @@
 
                                             <div class="col-12 d-flex justify-content-center">
                                                 <button class="btn btn-primary px-4 validate apply-now temp_disb"
-                                                    id="submit_btn" onclick=""
-                                                    disabled>Submit</button>
+                                                    id="submit_btn" onclick="" disabled>Submit</button>
 
                                             </div>
                                         </div>

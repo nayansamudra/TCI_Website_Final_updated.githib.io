@@ -75,8 +75,8 @@
 
 .success-stories-card-img-box .btn-play {
   position: absolute;
-  top: 84%;
-  right: 5%;
+  top: 40%;
+  left: 40%;
   content: "";
   width: 80px;
   height: 80px;
@@ -296,8 +296,8 @@
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
   display: block;
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   background: #f5f7fa;
   background: #324ed4;
   border-radius: 50%;
