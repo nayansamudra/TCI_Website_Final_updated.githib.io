@@ -141,6 +141,7 @@ function SendOtp() {
             // lock
             $('#send_btn').off()
             $("#submit_btn").click(function () {
+                console.log('submit form called INSIDE SEND OTP')
                 submit_lead_form()
             })
         }
@@ -179,6 +180,7 @@ const verify_otp = () => {
 
             $("#submit_btn").removeClass("temp_disb")
             $("#submit_btn").click(function () {
+                console.log('submit form called INSIDE VERIFY OTP')
                 submit_lead_form()
             })
             $("#ph_msg").text("OTP Verified")
@@ -295,7 +297,7 @@ $('.btn-close').click(function () {
 
 $(document).ready(function () {
 
-    console.log = function () { };
+    // console.log = function () { };
 
     $('img').attr("oncontextmenu", "return false;")
 
