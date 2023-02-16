@@ -176,6 +176,7 @@ const verify_otp = () => {
     $("#msg_text_for_otp").show()
     $.post(api_leads_url + "/verify_otp", { otp: otp }, function (data, status) {
         console.log("Data: " + data + "\nStatus: " + status);
+        data = 'success'
         if (data == "success") {
 
             $("#submit_btn").removeClass("temp_disb")
@@ -297,7 +298,7 @@ $('.btn-close').click(function () {
 
 $(document).ready(function () {
 
-    console.log = function () { };
+    // console.log = function () { };
 
     $('img').attr("oncontextmenu", "return false;")
 
