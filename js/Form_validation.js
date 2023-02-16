@@ -318,6 +318,9 @@ $(document).ready(function () {
 
     $('#GetFreeCounseling').on('hidden.bs.modal', function () {
         console.log("Modal is close")
+        global_otp_ct = 0
+        sendOTP_via_resend = false
+        global_email_valid = false
         $('#Send_OTP_Modal').removeClass().addClass('container d-flex justify-content-center align-items-center')
         $('#Validate_OTP_Modal').removeClass().addClass('container d-none d-flex justify-content-center align-items-center')
         $('#User_Details_Modal').removeClass().addClass('container d-none d-flex justify-content-center align-items-center')
