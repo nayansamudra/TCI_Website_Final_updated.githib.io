@@ -102,7 +102,7 @@
             background-color: white;
             display: grid;
             place-content: center;
-            animation: grow 1s infinite;
+            /* animation: grow 1s infinite; */
             cursor: pointer;
         }
 
@@ -116,7 +116,7 @@
             background-color: white;
             display: grid;
             place-content: center;
-            animation: grow 1s infinite;
+            /* animation: grow 1s infinite; */
             cursor: pointer;
         }
 
@@ -309,6 +309,120 @@
             .Faculty_Name,
             .Faculty_Description {
                 font-size: smaller !important;
+            }
+        }
+    </style>
+
+    <!-- Extra Play button  -->
+    <style>
+        .video-btn {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            font-size: 35px;
+            text-align: center;
+            line-height: 80px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            -webkit-transform: translateY(-50%) translateX(-50%);
+            transform: translateY(-50%) translateX(-50%);
+            border-radius: 50%;
+            color: #fff;
+            background-color: #324ed4;
+        }
+        @media (max-width:500px) {
+            .video-btn {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            line-height: 45px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            -webkit-transform: translateY(-50%) translateX(-50%);
+            transform: translateY(-50%) translateX(-50%);
+            border-radius: 50%;
+            color: #fff;
+            background-color: #324ed4;
+            }
+            .video-btn>.fa-solid {
+                font-size: 25px;
+            }
+        }
+        .video-btn:hover {
+            color: #fff;
+        }
+        .video-btn:before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            bottom: 0;
+            left: 0;
+            -webkit-transition: .5s;
+            transition: .5s;
+            border-radius: 50%;
+            border: 1px solid #324ed4;
+            -webkit-animation: ripple 2s linear infinite;
+            animation: ripple 2s linear infinite;
+        }
+        .video-btn:after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            bottom: 0;
+            left: 0;
+            -webkit-transition: .5s;
+            transition: .5s;
+            border-radius: 50%;
+            border: 1px solid #324ed4;
+            -webkit-animation: ripple 2s linear 1s infinite;
+            animation: ripple 2s linear 1s infinite;
+            animation-delay: 1s;
+        }
+        @-webkit-keyframes ripple {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1)
+            }
+
+            75% {
+                -webkit-transform: scale(1.75);
+                transform: scale(1.75);
+                opacity: 1
+            }
+
+            100% {
+                -webkit-transform: scale(2);
+                transform: scale(2);
+                opacity: 0
+            }
+        }
+        @keyframes ripple {
+            0% {
+                -webkit-transform: scale(1);
+                transform: scale(1)
+            }
+
+            75% {
+                -webkit-transform: scale(1.75);
+                transform: scale(1.75);
+                opacity: 1
+            }
+
+            100% {
+                -webkit-transform: scale(2);
+                transform: scale(2);
+                opacity: 0
             }
         }
     </style>
@@ -522,9 +636,12 @@
                         <img alt="Laptop_Image" src="./img/laptop_1.webp">
                         <img class="laptop_thmbnail" alt="laptop thmbnail" src="img/Laptop_vdo_img.webp">
                         <div class="circle_1 laptop_video_button">
-                            <span class="material-icons d-flex align-items-center">
+                            <!-- <span class="material-icons d-flex align-items-center">
                                 <i class="fa-solid fa-play"></i>
-                            </span>
+                            </span> -->
+                            <a href="javascript:void(0)" class="video-btn popup-youtube" rel="nofollow noopener">
+                                <i class="fa-solid fa-play"></i>
+                            </a>
                             <!-- <button type="button" class="video-play-button" data-toggle="modal"
                             data-target="#coursesVideoPopup">
                             <i class="fa-solid fa-circle-play"></i>
@@ -552,9 +669,12 @@
                             <img alt="Laptop_Image" src="./img/Laptop_Mobile_View.webp" width="1348px">
                             <img class="laptop_thmbnail_mobile" alt="laptop thmbnail" src="img/Laptop_vdo_img.webp">
                             <div class="circle_2 laptop_video_button_mobile">
-                                <span class="material-icons d-flex align-items-center">
+                                <!-- <span class="material-icons d-flex align-items-center">
                                     <i class="fa-solid fa-play"></i>
-                                </span>
+                                </span> -->
+                                <a href="javascript:void(0)" class="video-btn popup-youtube" rel="nofollow noopener">
+                                    <i class="fa-solid fa-play"></i>
+                                </a>
                             </div>
                             <iframe style="display: none;" class="Laptop_Video_iframe_mobile" src=""
                                 title="YouTube video player" frameborder="0"
@@ -645,6 +765,10 @@
 
         </div>
 
+        <!-- <a href="javascript:void(0)" class="video-btn popup-youtube" rel="nofollow noopener">
+            <i class="fa-solid fa-play"></i>
+        </a> -->
+
         <!-- Course Curriculum (NEW BOOTSTRAP) -->
         <div class="mt-5 container pagespeed_hide" style="padding-left: 24px !important;">
             <div class="row">
@@ -654,7 +778,7 @@
                     </div>
                 </div>
                 <div class="row justify-content-center" style="padding-right: 0 !important;">
-                    <div class="col-md-7 col-lg-6 px-0">
+                    <div class="col-md-9 col-lg-9 px-0">
                         <div id="accordion_1" class="myaccordion w-100" style="font-family: Outfit !important;">
                             <div class="card_accordian">
                                 <div class="card-header p-0" id="heading_One">
@@ -947,6 +1071,15 @@
         <div class="container-fluid mt-5 pt-5 pb-5 d-none d-flex justify-content-center pagespeed_hide"
             id="Features_of_Tredcode" style="background-color: #f3f3ff;">
             <div class="row" id="Features_of_TCI_Trecode_row" style="width:75%">
+                <div class="col-lg-6 d-none d-flex align-items-center justify-content-center mb-3"
+                    id="Trecode_row_second_col_mobile">
+                    <div>
+                        <div class="img_description_bold" style="color:#5271ff">
+                            <span style="font-weight: bold; font-size: xx-large;"
+                                id="Tredcode_Modal_heading_mobile">Tredcode</span>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-6 d-flex justify-content-center">
                     <img src="./img/Screenshot_30.webp" width="75%" alt="tredcode_img" loading="lazy"
                         style="box-shadow: 0 0 2px 2px rgb(14,14,14); border-radius: 10px;" />
@@ -1009,9 +1142,12 @@
                                     style="display:none"></div>
                                 <div class="js-thumbnail-wrapper video-thumbnail main_testimonial_video-thumbnail">
                                     <div class="circle">
-                                        <span class="material-icons d-flex align-items-center">
+                                        <!-- <span class="material-icons d-flex align-items-center">
                                             <i class="fa-solid fa-play"></i>
-                                        </span>
+                                        </span> -->
+                                        <a href="javascript:void(0)" class="video-btn popup-youtube" rel="nofollow noopener">
+                                            <i class="fa-solid fa-play"></i>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -1107,9 +1243,12 @@
                                             style="display:none"></div>
                                         <div class="js-thumbnail-wrapper video-thumbnail-1">
                                             <div class="circle">
-                                                <span class="material-icons d-flex align-items-center">
+                                                <!-- <span class="material-icons d-flex align-items-center">
                                                     <i class="fa-solid fa-play"></i>
-                                                </span>
+                                                </span> -->
+                                                <a href="javascript:void(0)" class="video-btn popup-youtube" rel="nofollow noopener">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1163,9 +1302,12 @@
                                             style="display:none"></div>
                                         <div class="js-thumbnail-wrapper video-thumbnail-2">
                                             <div class="circle">
-                                                <span class="material-icons d-flex align-items-center">
+                                                <!-- <span class="material-icons d-flex align-items-center">
                                                     <i class="fa-solid fa-play"></i>
-                                                </span>
+                                                </span> -->
+                                                <a href="javascript:void(0)" class="video-btn popup-youtube" rel="nofollow noopener">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -1217,9 +1359,12 @@
                                             style="display:none"></div>
                                         <div class="js-thumbnail-wrapper video-thumbnail-3">
                                             <div class="circle">
-                                                <span class="material-icons d-flex align-items-center">
+                                                <!-- <span class="material-icons d-flex align-items-center">
                                                     <i class="fa-solid fa-play"></i>
-                                                </span>
+                                                </span> -->
+                                                <a href="javascript:void(0)" class="video-btn popup-youtube" rel="nofollow noopener">
+                                                    <i class="fa-solid fa-play"></i>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
@@ -2432,6 +2577,7 @@
 
             $('.laptop_thmbnail').click(() => {
                 $('.laptop_thmbnail').hide()
+                $('.laptop_video_button').hide()
                 if (counter_for_vimeo_Laptop_video == 0) {
                     $('.Laptop_Video_iframe').attr('src', 'https://player.vimeo.com/video/796194771?h=c42df8671e&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479')
                     counter_for_vimeo_Laptop_video = 1
@@ -2470,6 +2616,7 @@
                         telegram_counter += 1
                     }, 5000);
                     $('.laptop_thmbnail').show()
+                    $('.laptop_video_button').show()
                     $('.Laptop_Video_iframe').hide()
                 });
             })
@@ -2480,6 +2627,7 @@
 
             $('.laptop_thmbnail_mobile').click(() => {
                 $('.laptop_thmbnail_mobile').hide()
+                $('.laptop_video_button_mobile').hide()
                 if (counter_for_vimeo_Laptop_video_MOBILE == 0) {
                     $('.Laptop_Video_iframe_mobile').attr('src', 'https://player.vimeo.com/video/796194771?h=c42df8671e&amp;title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479')
                     counter_for_vimeo_Laptop_video_MOBILE = 1
@@ -2505,6 +2653,7 @@
                         telegram_counter += 1
                     }, 7000);
                     $('.laptop_thmbnail_mobile').show()
+                    $('.laptop_video_button_mobile').show()
                     $('.Laptop_Video_iframe_mobile').hide()
                 });
             })

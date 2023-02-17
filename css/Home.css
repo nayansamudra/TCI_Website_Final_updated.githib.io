@@ -2439,7 +2439,14 @@ div.course-panel p {
   #About_Tredcode {
     display: none;
   }
+  #Trecode_row_second_col_mobile{
+    display: block !important;
+  }
+  #Trecode_row_second_col .img_description_bold{
+    display: none !important;
+  }
   #Trecode_row_second_col div,
+  #Trecode_row_second_col_mobile div,
   #delayedPopup_row_second_col div {
     margin-left: 0 !important;
   }
@@ -2454,6 +2461,7 @@ div.course-panel p {
     display: flex;
   }
   #Trecode_row_second_col .img_description_bold,
+  #Trecode_row_second_col_mobile .img_description_bold,
   #delayedPopup_row_second_col .img_description_bold,
   #Trecode_row_second_col .img_description,
   #delayedPopup_row_second_col .img_description {
@@ -2478,6 +2486,7 @@ div.course-panel p {
     width: 160px !important;
   }
   #Trecode_row_second_col,
+  #Trecode_row_second_col_mobile,
   #delayedPopup_row_second_col {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -2717,7 +2726,7 @@ div.circle {
   background-color: white;
   display: grid;
   place-content: center;
-  animation: grow 1s infinite;
+  /* animation: grow 1s infinite; */
 }
 div.circle > span {
   color: #324ed4;

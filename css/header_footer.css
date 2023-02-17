@@ -53,6 +53,13 @@
   }
 }
 
+@media (max-width:348px) {
+  #tci_logo {
+    height: 50px !important;
+    width: 50px !important;
+  }
+}
+
 @media screen and (max-width: 330px) {
   #Header_for_Mobile {
     display: block !important;
@@ -60,11 +67,6 @@
 
   #Header_for_Laptop {
     display: none !important;
-  }
-
-  #tci_logo {
-    height: 50px !important;
-    width: 50px !important;
   }
 
   #header_heading_1 {
