@@ -3084,11 +3084,11 @@ body.horizontal main {
   flex-direction: row;
   height: calc(95vh - 20em);
 }
-main {
+/* main {
   padding: 1em var(--gap);
   overflow-y: auto;
   display: flex;
-}
+} */
 body.horizontal main > * {
   min-width: 1000px;
   padding-left: var(--gap);
@@ -3331,8 +3331,8 @@ sticky_container
   display: flex;
   position: sticky;
   top:0;
-  border-bottom: 1px solid gray;
   border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
 }
 
 .sticky-container section {

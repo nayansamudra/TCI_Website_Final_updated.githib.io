@@ -741,7 +741,7 @@
         </div>
 
         <!-- sticky_container -->
-        <div class="mt-5 sticky-container">
+        <div class="mt-5 pt-5 sticky-container">
             <main>
                 <section>
                     <h1>Beep</h1>
@@ -2790,14 +2790,14 @@
 
                 function setStickyContainersSize() {
                     document.querySelectorAll('.sticky-container').forEach(function (container) {
-                        const stikyContainerHeight = container.querySelector('main').scrollWidth;
+                        const stikyContainerHeight = container.querySelector('main').scrollWidth - 650;
                         container.setAttribute('style', 'height: ' + stikyContainerHeight + 'px');
                     });
                 }
 
                 function isElementInViewport(el) {
                     const rect = el.getBoundingClientRect();
-                    return rect.top <= 0 && rect.bottom > document.documentElement.clientHeight;
+                    return rect.top <= 1500 && rect.bottom > document.documentElement.clientHeight;
                 }
 
                 function wheelHandler(evt) {
@@ -2808,7 +2808,7 @@
                             console.log("counter_add_evt_list : ",counter_add_evt_list)
                             counter_add_evt_list += 1
                             $(window).scroll(function () {
-                                if(counter_for_text == 0){
+                                if(counter_for_text == 0) {
                                     counter_for_text += 1
                                     console.log("evt added")
                                 }
