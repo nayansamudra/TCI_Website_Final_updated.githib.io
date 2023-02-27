@@ -77,13 +77,13 @@ $(document).ready(function () {
       $(this).addClass('active')
       $(this).next().css('max-height', 'fit-content')
     }
-    else if(counter_course_accordion > 2){
+    else if (counter_course_accordion > 2) {
       if (temp == index) {
-        if($(this).hasClass('active')){
+        if ($(this).hasClass('active')) {
           $('.course-accordion').removeClass('active')
           $('.course-panel').css('max-height', '0px')
         }
-        else if(!$(this).hasClass('active')){
+        else if (!$(this).hasClass('active')) {
           $(this).addClass('active')
           $(this).next().css('max-height', 'fit-content')
         }
@@ -97,6 +97,69 @@ $(document).ready(function () {
     }
     index = temp
   })
+
+  const scrollContainer = document.querySelector("main");
+
+  scrollContainer.addEventListener("wheel", (evt) => {
+    evt.preventDefault();
+    scrollContainer.scrollLeft += evt.deltaY;
+  });
+
+  scroll_counter = 0;
+  lastScrollTop = 0;
+
+  var wrap = $("main");
+
+  $(window).bind('mousewheel', function (event) {
+    if (event.originalEvent.wheelDelta >= 0) {
+      scroll_counter = 0
+      console.log('Scroll up - MOVING LEFT');
+      if ($('#business-studio').scrollLeft < 1000 && $('#business-studio').scrollLeft > 0) {
+        console.log(scroll_counter);
+        $($('#business-studio')).scrollLeft(1000)
+        if (scroll_counter > 15) {
+          $($('#business-studio')).scrollLeft(0)
+        }
+      } else if ($('#business-studio').scrollLeft < 2000 && $('#business-studio').scrollLeft > 1000) {
+        console.log(scroll_counter);
+        $($('#business-studio')).scrollLeft(2000)
+        if (scroll_counter > 10) {
+          $($('#business-studio')).scrollLeft(1000)
+        }
+      } else if ($('#business-studio').scrollLeft < 3000 && $('#business-studio').scrollLeft > 2000) {
+        console.log(scroll_counter);
+        $($('#business-studio')).scrollLeft(3000)
+        if (scroll_counter > 5) {
+          $($('#business-studio')).scrollLeft(2000)
+        }
+      }
+    }
+  });
+
+
+  wrap.on("scroll", function (e) {
+    scroll_counter += 1;
+    if (this.scrollLeft < 1000 && this.scrollLeft > 0) {
+      console.log(scroll_counter);
+      $(this).scrollLeft(0)
+      if (scroll_counter > 5) {
+        $(this).scrollLeft(1000)
+      }
+    } else if (this.scrollLeft < 2000 && this.scrollLeft > 1000) {
+      console.log(scroll_counter);
+      $(this).scrollLeft(1000)
+      if (scroll_counter > 10) {
+        $(this).scrollLeft(2000)
+      }
+    } else if (this.scrollLeft < 3000 && this.scrollLeft > 2000) {
+      console.log(scroll_counter);
+      $(this).scrollLeft(2000)
+      if (scroll_counter > 15) {
+        $(this).scrollLeft(3000)
+      }
+    }
+  });
+
 
   $(window).resize(function () {
     if ($(window).width() < 1200) {
