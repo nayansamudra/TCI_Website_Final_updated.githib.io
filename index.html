@@ -537,19 +537,6 @@
 
     <hr class="my-0 divider">
 
-    <!-- <div class="container-fluid" id="Horizontal_Scrolling_2">
-        <div class="horizontal-scroll-wrapper rectangles">
-            <div>item 1</div>
-            <div>item 2</div>
-            <div>item 3</div>
-            <div>item 4</div>
-            <div>item 5</div>
-            <div>item 6</div>
-            <div>item 7</div>
-            <div>item 8</div>
-        </div>
-    </div> -->
-
     <!-- Home Page Start  -->
     <span id="Home_Page">
 
@@ -751,7 +738,24 @@
                     </div>
                 </div>
             </div>
+        </div>
 
+        <!-- sticky_container -->
+        <div class="sticky-container">
+            <main>
+                <section>
+                    <h1>Beep</h1>
+                </section>
+                <section>
+                    <h1>Boop</h1>
+                </section>
+                <section>
+                    <h1>Boooom</h1>
+                </section>
+                <section>
+                    <h1>The End</h1>
+                </section>
+            </main>
         </div>
 
         <!-- Course Curriculum (NEW BOOTSTRAP) -->
@@ -2503,7 +2507,7 @@
 
     <!-- Horizontal Scrolling -->
 
-    <div class="mb-5 container-fluid justify-content-center" id="layoutbox" style="width:90%">
+    <!-- <div class="mb-5 container-fluid justify-content-center" id="layoutbox" style="width:90%">
         <main id="business-studio">
             <services id="digitalny-marketing">
                 <ul id="ul_list">
@@ -2582,7 +2586,7 @@
                 </ul>
             </services>
         </main>
-    </div>
+    </div> -->
 
     <!-- Horizontal Scrolling 3 -->
 
@@ -2736,8 +2740,23 @@
     <script src="js/vimeo_player.js" defer></script>
     <script src="js/odometer.js" defer></script>
 
+
     <script>
+
+        wheelDistance = (evt) => {
+            // wheelDelta indicates how
+            // Far the wheel is turned
+            var w = evt.wheelDelta;
+
+            // Returning normalized value
+            console.log("whl")
+            return w / 120;
+        }
+
         jQuery(document).ready(function ($) {
+
+            counter_add_evt_list = counter_for_text = 0
+
             function onVisible(element, callback) {
                 new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
@@ -2754,6 +2773,69 @@
                 odometer_2.innerHTML = 12;
                 odometer_3.innerHTML = 1;
             }, 1000));
+
+            (function () {
+                init();
+
+                var g_containerInViewport;
+                function init() {
+                    setStickyContainersSize();
+                    bindEvents();
+                }
+
+                function bindEvents() {
+                    window.addEventListener("wheel", wheelHandler);
+                    // window.addEventListener("scroll", wheelHandler);
+                }
+
+                function setStickyContainersSize() {
+                    document.querySelectorAll('.sticky-container').forEach(function (container) {
+                        const stikyContainerHeight = container.querySelector('main').scrollWidth;
+                        container.setAttribute('style', 'height: ' + stikyContainerHeight + 'px');
+                    });
+                }
+
+                function isElementInViewport(el) {
+                    const rect = el.getBoundingClientRect();
+                    return rect.top <= 0 && rect.bottom > document.documentElement.clientHeight;
+                }
+
+                function wheelHandler(evt) {
+
+                    const containerInViewPort = Array.from(document.querySelectorAll('.sticky-container')).filter(function (container) {
+                        console.log(isElementInViewport(container)) 
+                        if (isElementInViewport(container) && counter_add_evt_list == 0) {
+                            console.log("counter_add_evt_list : ",counter_add_evt_list)
+                            counter_add_evt_list += 1
+                            $(window).scroll(function () {
+                                if(counter_for_text == 0){
+                                    counter_for_text += 1
+                                    console.log("evt added")
+                                }
+                                // $("span").css("display", "inline").fadeOut("slow");
+                            });
+                        }
+                        else {
+                            $(window).off('scroll')
+                            console.log("evt removed")
+                        }
+
+                        return isElementInViewport(container);
+                    })[0];
+
+                    if (!containerInViewPort) {
+                        return;
+                    }
+
+                    var isPlaceHolderBelowTop = containerInViewPort.offsetTop < document.documentElement.scrollTop;
+                    var isPlaceHolderBelowBottom = containerInViewPort.offsetTop + containerInViewPort.offsetHeight > document.documentElement.scrollTop;
+                    let g_canScrollHorizontally = isPlaceHolderBelowTop && isPlaceHolderBelowBottom;
+
+                    if (g_canScrollHorizontally) {
+                        containerInViewPort.querySelector('main').scrollLeft += evt.deltaY;
+                    }
+                }
+            })();
         });
     </script>
 
