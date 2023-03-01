@@ -3055,7 +3055,7 @@ Tredcode Carousel
 Horizontal Scroll 
 -----------------*/
 
-main::-webkit-scrollbar-track {
+/* main::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: #f5f5f5;
   border-radius: 10px;
@@ -3083,13 +3083,13 @@ body.horizontal main {
   flex-wrap: nowrap;
   flex-direction: row;
   height: calc(95vh - 20em);
-}
+} */
 /* main {
   padding: 1em var(--gap);
   overflow-y: auto;
   display: flex;
 } */
-body.horizontal main > * {
+/* body.horizontal main > * {
   min-width: 1000px;
   padding-left: var(--gap);
   margin-right: var(--gap);
@@ -3171,7 +3171,7 @@ services figcaption p {
   font-size: 1.3em;
   line-height: 1.3;
   margin: 0;
-}
+} */
 
 /* --------------------
 Horizontal Scrolling 1 
@@ -3320,31 +3320,112 @@ Horizontal Scrolling 3
   color:red;
 } */
 
-
-
 /* --------------
 sticky_container
 -------------- */
 
-.sticky-container main {
+/* .sticky-container main {
   overflow-x: hidden;
   display: flex;
   position: sticky;
-  top:0;
+  top: 0;
   border-top: 1px solid gray;
   border-bottom: 1px solid gray;
 }
 
 .sticky-container section {
-  min-width: 50vw;
-  min-height: 50vh;
+  min-width: 100vw;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 4ch;
-}
+} */
 
-.sticky-container section:nth-child(even) {
+/* .sticky-container section:nth-child(even) {
   background-color: teal;
   color: white;
+} */
+
+/* -------------------------------- 
+Horizontal Scroll from GreenSock 1
+-------------------------------  */
+
+/* .massiveImage {
+  height: 50vh;
+  width: 50vw;
+  background-size: cover; 
+  background-position: center; 
 }
+.header-section {
+  padding-bottom: 5vh;
+  margin-bottom: 0;
+} */
+
+/* -------------------------------- 
+Horizontal Scroll from GreenSock 2
+-------------------------------  */
+
+/* .panel pre.prettyprint {
+  font-size: 20px;
+  text-align: left;
+  width: auto;
+  font-weight: normal;
+  margin: 10px;
+  border: none;
+}
+.prettyprint .linenums {
+  padding: 0;
+  list-style: none;
+}
+.prettyprint ol li {
+  background-color: black;
+}
+
+.panel.red .prettyprint .linenums > li:nth-child(n + 7):nth-child(-n + 9),
+.panel.gray .prettyprint .linenums > li:nth-child(10),
+.panel.purple .prettyprint .linenums > li:nth-child(4),
+.panel.green .prettyprint .linenums > li:nth-child(n + 6):nth-child(-n + 10) {
+  background-color: #222;
+}
+
+.box {
+  width: 100px;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+  background-color: white;
+  border-radius: 8px;
+  color: #222;
+  font-weight: 700;
+  margin-left: 20px;
+  will-change: transform;
+}
+.box.active {
+  background-color: orange;
+  border: 2px solid white;
+}
+.description,
+.final {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  min-height: fit-content;
+}
+
+#container {
+  width: 400%;
+  height: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.panel {
+  font-weight: 300;
+}
+
+div.pin-spacer {
+  padding: 0 !important;
+} */
+
