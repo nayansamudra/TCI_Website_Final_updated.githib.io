@@ -432,7 +432,7 @@
             background-color: #22d659;
         }
 
-        #pinContainer {
+        #pinContainer, #pinContainer_1, #pinContainer_2{
             text-align: center;
         }
 
@@ -442,7 +442,7 @@
             background-image: none;
         }
 
-        .demo#section-slides .panel > b {
+        .demo#section-slides .panel>b {
             font-size: 15px;
             color: white;
             position: relative;
@@ -452,7 +452,9 @@
             top: 50%;
         }
 
-        #pinContainer {
+        #pinContainer,
+        #pinContainer_1,
+        #pinContainer_2 {
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -460,7 +462,9 @@
             perspective: 1000;
         }
 
-        #slideContainer {
+        #slideContainer,
+        #slideContainer_1,
+        #slideContainer_2 {
             width: 400%;
             height: 100%;
         }
@@ -1130,6 +1134,23 @@
                 </div>
             </div>
 
+            <div id="pinContainer_1">
+                <div id="slideContainer_1">
+                    <section class="panel blue">
+                        <b>ONE</b>
+                    </section>
+                    <section class="panel turqoise">
+                        <b>TWO</b>
+                    </section>
+                    <section class="panel green">
+                        <b>THREE</b>
+                    </section>
+                    <section class="panel bordeaux">
+                        <b>FOUR</b>
+                    </section>
+                </div>
+            </div>
+
             <div class="container-fluid mt-5 pt-5 pb-5 d-none d-flex justify-content-center pagespeed_hide"
                 id="Features_of_Tredcode" style="background-color: #f3f3ff;">
                 <div class="row" id="Features_of_TCI_Trecode_row" style="width:75%">
@@ -1298,6 +1319,23 @@
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Next</span>
                 </button>
+            </div>
+
+            <div id="pinContainer_2">
+                <div id="slideContainer_2">
+                    <section class="panel blue">
+                        <b>ONE</b>
+                    </section>
+                    <section class="panel turqoise">
+                        <b>TWO</b>
+                    </section>
+                    <section class="panel green">
+                        <b>THREE</b>
+                    </section>
+                    <section class="panel bordeaux">
+                        <b>FOUR</b>
+                    </section>
+                </div>
             </div>
 
             <!-- Video Testimonail -->
@@ -1583,7 +1621,8 @@
                 </div>
             </div>
 
-            <div class="get_free_guidance_1 d-none d-flex justify-content-center wow animatable fadeInUp pagespeed_hide">
+            <div
+                class="get_free_guidance_1 d-none d-flex justify-content-center wow animatable fadeInUp pagespeed_hide">
                 <a href="success-stories.html">
                     <div class="py-3 px-3" id="more_success_stories"
                         style="font-size: xx-large;font-weight: bolder;color: #324ed4;">
@@ -2639,7 +2678,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-    </script>
+        </script>
 
     <script src="js/intlTelInput.min.js"></script>
     <script src="js/scrollmagic/ScrollMagic.min.js" defer></script>
@@ -2675,6 +2714,56 @@
                 .setTween(wipeAnimation)
                 .addIndicators() // add indicators (requires plugin)
                 .addTo(controller);
+
+
+
+            // init
+            var controller_1 = new ScrollMagic.Controller();
+
+            // define movement of panels
+            var wipeAnimation_1 = new TimelineMax()
+                // animate to second panel
+                .to("#slideContainer_1", 1, { x: "-25%" })	// move in to first panel           
+                // animate to third panel                        
+                .to("#slideContainer_1", 1, { x: "-50%" })
+                // animate to forth panel                        
+                .to("#slideContainer_1", 1, { x: "-75%" })
+
+            // create scene to pin and link animation
+            new ScrollMagic.Scene({
+                triggerElement: "#pinContainer_1",
+                triggerHook: "onLeave",
+                duration: "300%"
+            })
+                .setPin("#pinContainer_1")
+                .setTween(wipeAnimation_1)
+                .addIndicators() // add indicators (requires plugin)
+                .addTo(controller_1);
+
+
+
+            // init
+            var controller_2 = new ScrollMagic.Controller();
+
+            // define movement of panels
+            var wipeAnimation_2 = new TimelineMax()
+                // animate to second panel
+                .to("#slideContainer_2", 1, { x: "-25%" })	// move in to first panel           
+                // animate to third panel                        
+                .to("#slideContainer_2", 1, { x: "-50%" })
+                // animate to forth panel                        
+                .to("#slideContainer_2", 1, { x: "-75%" })
+
+            // create scene to pin and link animation
+            new ScrollMagic.Scene({
+                triggerElement: "#pinContainer_2",
+                triggerHook: "onLeave",
+                duration: "300%"
+            })
+                .setPin("#pinContainer_2")
+                .setTween(wipeAnimation_2)
+                .addIndicators() // add indicators (requires plugin)
+                .addTo(controller_2);
         });
     </script>
 
