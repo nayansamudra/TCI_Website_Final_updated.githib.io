@@ -360,6 +360,7 @@ $(document).ready(function () {
         .on('hidden.bs.modal', function () {
             $('html').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
             // $('body').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
+            $('body').css('overflow-x', 'clip')
         })
 
     $(window).on('hashchange', function (event) {
@@ -383,5 +384,6 @@ $(document).ready(function () {
             console.log('tredcode_modal is close')
             $('html').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
             // $('body').attr('style', 'overflow-x:hidden !important; overflow-y:auto !important')
+            $('body').css('overflow-x', 'clip')
         })
 });

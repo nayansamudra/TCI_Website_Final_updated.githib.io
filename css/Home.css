@@ -3296,7 +3296,6 @@ Horizontal Scrolling 2
 /* --------------------
 Horizontal Scrolling 3 
 --------------------- */
-
 /* #Horizontal_Scrolling_3 {
   width:100%;
   white-space: nowrap;
@@ -3323,7 +3322,6 @@ Horizontal Scrolling 3
 /* --------------
 sticky_container
 -------------- */
-
 /* .sticky-container main {
   overflow-x: hidden;
   display: flex;
@@ -3350,7 +3348,6 @@ sticky_container
 /* -------------------------------- 
 Horizontal Scroll from GreenSock 1
 -------------------------------  */
-
 /* .massiveImage {
   height: 50vh;
   width: 50vw;
@@ -3365,7 +3362,6 @@ Horizontal Scroll from GreenSock 1
 /* -------------------------------- 
 Horizontal Scroll from GreenSock 2
 -------------------------------  */
-
 /* .panel pre.prettyprint {
   font-size: 20px;
   text-align: left;
@@ -3428,4 +3424,3 @@ Horizontal Scroll from GreenSock 2
 div.pin-spacer {
   padding: 0 !important;
 } */
-

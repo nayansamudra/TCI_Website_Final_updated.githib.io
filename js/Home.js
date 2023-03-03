@@ -105,10 +105,10 @@ $(document).ready(function () {
   //   scrollContainer.scrollLeft += evt.deltaY;
   // });
 
-  scroll_counter = 0;
-  lastScrollTop = 0;
+  // scroll_counter = 0;
+  // lastScrollTop = 0;
 
-  var wrap = $("main");
+  // var wrap = $("main");
 
   // $(window).bind('mousewheel', function (event) {
   //   if (event.originalEvent.wheelDelta >= 0) {
@@ -160,9 +160,18 @@ $(document).ready(function () {
   //   // }
   // });
 
-  // $(window).scroll(function(event) {
-  //   // console.log($("#layoutbox").offset().top < $(window).scrollTop() + $(window).outerHeight());
-  // });
+  $(window).scroll(function (event) {
+    horizontal_scroll_1_start = $("#pinContainer").offset().top == $(window).scrollTop()
+    console.log("horizontal_scroll_1_start", horizontal_scroll_1_start)
+    if ($(window).width() < 413) {
+      if (horizontal_scroll_1_start == true) {
+        $('body').css('overflow-x', 'visible !important')
+      }
+    }
+    else if ($(window).width() > 413) {
+      $('body').css('overflow-x', 'clip')
+    }
+  });
 
   //   $(document).scroll(function(){
   //     $('div').find('#layoutbox').each(function(){
@@ -336,7 +345,6 @@ $(document).ready(function () {
   //     .addTo(controller);
   // });
 
-
   $(window).resize(function () {
     if ($(window).width() < 1200) {
       $("#Rocket_container")
@@ -350,9 +358,11 @@ $(document).ready(function () {
     }
     if ($(window).width() < 413) {
       $("#For_Mobile_View_image-item").removeClass("justify-content-center");
+      $('body').css('overflow-x', 'clip')
     }
     if ($(window).width() > 413) {
       $("#For_Mobile_View_image-item").addClass("justify-content-center");
+      $('body').css('overflow-x', 'clip')
     }
   });
 
@@ -364,8 +374,10 @@ $(document).ready(function () {
   }
   if ($(window).width() < 413) {
     $("#For_Mobile_View_image-item").removeClass("justify-content-center");
+    $('body').css('overflow-x', 'clip')
   }
   if ($(window).width() > 413) {
     $("#For_Mobile_View_image-item").addClass("justify-content-center");
+    $('body').css('overflow-x', 'clip')
   }
 });
