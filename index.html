@@ -438,8 +438,23 @@
 
         #pinContainer,
         #pinContainer_1,
-        #pinContainer_2 {
+        #pinContainer_2,        
+        #Mobile_pinContainer,
+        #Mobile_pinContainer_1,
+        #Mobile_pinContainer_2 {
             text-align: center;
+        }
+
+        #Mobile_pinContainer,
+        #Mobile_pinContainer_1,
+        #Mobile_pinContainer_2 {
+            display: none !important;
+        }
+
+        #pinContainer,
+        #pinContainer_1,
+        #pinContainer_2 {
+            display: block !important;
         }
 
         .demo#section-slides {
@@ -449,7 +464,9 @@
         }
 
         .demo#section-slides .panel>b,
-        .demo#section-slides .panel_1>b {
+        .demo#section-slides .panel_1>b,        
+        .demo#section-slides .mobile_panel>b,
+        .demo#section-slides .mobile_panel_1>b {
             font-size: 15px;
             color: white;
             position: relative;
@@ -461,7 +478,10 @@
 
         #pinContainer,
         #pinContainer_1,
-        #pinContainer_2 {
+        #pinContainer_2,
+        #Mobile_pinContainer,
+        #Mobile_pinContainer_1,
+        #Mobile_pinContainer_2 {
             width: 100%;
             height: 100%;
             overflow: hidden;
@@ -471,30 +491,146 @@
 
         #slideContainer,
         #slideContainer_2 {
+            width: 300%;
+            height: 100%;
+        }        
+        
+        #Mobile_slideContainer,
+        #Mobile_slideContainer_1,
+        #Mobile_slideContainer_2 {
             width: 400%;
             height: 100%;
         }
 
         #slideContainer_1 {
-            width: 500%;
+            width: 300%;
             height: 100%;
         }
 
         .panel {
             height: 100%;
-            width: 25%;
+            width: 33.33%;
             float: left;
         }
 
         .panel_1 {
             height: 100%;
-            width: 20%;
+            width: 33.33%;
             float: left;
+        }
+
+        .mobile_panel,
+        .mobile_panel_1{
+            height: 100%;
+            width: 25%;
+            float: left
         }
 
         body,
         html {
             height: 100%
+        }
+
+        @media (max-width:1550px) {
+            .col-1 {
+                padding-right: 0 !important;
+            }
+
+            .text_size {
+                font-size: x-large !important;
+            }
+
+            .logo_img {
+                width: 30% !important
+            }
+        }
+
+        @media (max-width:1635px) {
+            .padding_left {
+                padding-left: 20% !important;
+                padding-right: 0 !important;
+            }
+
+            .padding_left .col-auto {
+                padding-right: 0 !important;
+            }
+        }
+
+        @media (max-width:1188px) {
+            .padding_left {
+                padding-left: 15% !important;
+                padding-right: 0 !important;
+            }
+
+            .padding_left .col-auto {
+                padding-right: 0 !important;
+            }
+        }
+
+        @media (max-width:992px) {
+            .padding_left {
+                padding-left: 5% !important;
+                padding-right: 0 !important;
+            }
+
+            .text_size {
+                font-size: large !important;
+            }
+        }
+
+        @media (max-width:705px) {
+            .padding_left {
+                padding-left: 1% !important;
+                padding-right: 0 !important;
+            }
+
+            .text_size {
+                font-size: medium !important;
+            }
+
+            .logo_img {
+                width: 40% !important
+            }
+
+            #pinContainer .col-6,
+            #pinContainer_1 .col-6,
+            #pinContainer_2 .col-6,
+            #pinContainer .col_right>.container,
+            #pinContainer_1 .col_right>.container,
+            #pinContainer_2 .col_right>.container,
+            #pinContainer .col_right,
+            #pinContainer_1 .col_right,
+            #pinContainer_2 .col_right {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            .col-1 {
+                padding-left: 0 !important;
+            }
+        }
+
+        @media (max-width:576px) {
+            .text_size {
+                font-size: 14px !important;
+            }
+
+            #Mobile_pinContainer,
+            #Mobile_pinContainer_1,
+            #Mobile_pinContainer_2 {
+                display: block !important;
+            }
+
+            #pinContainer,
+            #pinContainer_1,
+            #pinContainer_2 {
+                display: none !important;
+            }
+
+            .mobile_panel .padding_left,
+            .mobile_panel_1 .padding_left{
+                padding-left: 15% !important;
+            }
         }
     </style>
 
@@ -849,7 +985,7 @@
         </div>
 
         <!-- Swiper Container -->
-        <swiper-container class="mySwiper" pagination="false" pagination-clickable="false" direction="horizontal"
+        <!-- <swiper-container class="mySwiper" pagination="false" pagination-clickable="false" direction="horizontal"
             space-between="30" mousewheel="true">
             <swiper-slide>Slide 1</swiper-slide>
             <swiper-slide>Slide 2</swiper-slide>
@@ -860,7 +996,7 @@
             <swiper-slide>Slide 7</swiper-slide>
             <swiper-slide>Slide 8</swiper-slide>
             <swiper-slide>Slide 9</swiper-slide>
-        </swiper-container>
+        </swiper-container> -->
 
         <!-- Start of Horizontal Slider -->
         <section class="mt-5 demo" id="section-slides">
@@ -869,30 +1005,25 @@
                     <section class="panel blue">
                         <div class="container-fluid" style="width:100vw;height:100vh">
                             <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/task-list.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/task-list.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 900;">Step 1:</span>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 900;">Step 1:</span>
                                             </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 600;">We provide you right
+                                            <div class="col-12">
+                                                <span class="text_size" style="font-size: xx-large;font-weight: 500;">We
+                                                    provide you right
                                                     methodology</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <img src="img/horizontal_scroll/images/arrow.svg" loading="lazy"
-                                                    alt="task_list" style="width:12%" />
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
                                 </div>
                             </div>
                         </div>
@@ -900,23 +1031,24 @@
                     <section class="panel turqoise">
                         <div class="container-fluid" style="width:100vw;height:100vh">
                             <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/strategy.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                <div class="col-6 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/strategy.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-10">
-                                                <div class="container" style="padding-left: 350px;">
+                                            <div class="col-12">
+                                                <div class="container padding_left" style="padding-left: 25%">
                                                     <div class="my-3 row">
                                                         <div class="col-1 d-flex align-items-center">
                                                             <img src="img/horizontal_scroll/images/check.svg"
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Proven
                                                                 backtested strategy</div>
                                                         </div>
@@ -927,8 +1059,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Clear
                                                                 entry and exit rules</div>
                                                         </div>
@@ -939,8 +1071,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Market
                                                                 conditions adaptability</div>
                                                         </div>
@@ -950,33 +1082,24 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="panel green">
-                        <div class="container-fluid" style="width:100vw;height:100vh">
-                            <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/growth_1.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                <div class="col-6 d-flex justify-content-end" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/growth_1.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-10">
-                                                <div class="container" style="padding-left: 350px;">
+                                            <div class="col-12 col_right">
+                                                <div class="container padding_left" style="padding-left: 25%">
                                                     <div class="my-3 row">
                                                         <div class="col-1 d-flex align-items-center">
                                                             <img src="img/horizontal_scroll/images/check.svg"
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Consistent profitability</div>
                                                         </div>
                                                     </div>
@@ -986,8 +1109,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Small losses - Big profits</div>
                                                         </div>
                                                     </div>
@@ -997,8 +1120,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 All these builds confidence</div>
                                                         </div>
                                                     </div>
@@ -1006,10 +1129,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
                                 </div>
                             </div>
                         </div>
@@ -1020,13 +1139,16 @@
                                 <div class="col-12" style="height:100vh">
                                     <div class="container d-flex justify-content-center align-content-center"
                                         style="height:100vh">
-                                        <div class="my-4 row py-4 d-flex justify-content-center align-content-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-content-center border_color">
                                             <div class="col-5">
-                                                <span style="font-size: xxx-large;font-weight: 400;">Time to find the
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Time to find the
                                                     right trade setups in the live market at the right time</span>
                                             </div>
                                             <div class="mt-5 col-11">
-                                                <span style="font-size: xxx-large;font-weight: 900;"> >> Step 2</span>
+                                                <span class="text_size" style="font-size: xx-large;font-weight: 900;">
+                                                    >> Step 2</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1036,67 +1158,33 @@
                     </section>
                 </div>
             </div>
-            <hr class="my-0 divider">
             <div id="pinContainer_1" style="color:#000d47">
                 <div id="slideContainer_1">
                     <section class="panel_1 blue">
                         <div class="container-fluid" style="width:100vw;height:100vh">
                             <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/rupee.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img"
+                                                    src="img/horizontal_scroll/images/Untitled_design.webp"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 900;">Step 2:</span>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 900;">Step 2: <br /> Master
+                                                    Tool Tredcode</span>
                                             </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 600;">Finding the smart
-                                                    money
-                                                    flow and trade setups
-                                                </span>
-                                            </div>
-                                            <div class="col-9">
-                                                <img src="img/horizontal_scroll/images/arrow.svg" loading="lazy"
-                                                    alt="task_list" style="width:12%" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="panel_1 turqoise">
-                        <div class="container-fluid" style="width:100vw;height:100vh">
-                            <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/Untitled_design.webp"
-                                                    loading="lazy" alt="task_list" style="width:25%" />
-                                            </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 900;">Master Tool -
-                                                    Tredcode</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 600;">Designed & developed
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Designed & developed
                                                     by TCI to find right trading opportunity at right time.
                                                 </span>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
                                 </div>
                             </div>
                         </div>
@@ -1104,23 +1192,24 @@
                     <section class="panel_1 green">
                         <div class="container-fluid" style="width:100vw;height:100vh">
                             <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/target_3.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                <div class="col-6 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/target_3.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-10">
-                                                <div class="container" style="padding-left: 350px;">
+                                            <div class="col-12">
+                                                <div class="container padding_left" style="padding-left: 25%">
                                                     <div class="my-3 row">
                                                         <div class="col-1 d-flex align-items-center">
                                                             <img src="img/horizontal_scroll/images/check.svg"
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Track big players activity</div>
                                                         </div>
                                                     </div>
@@ -1130,8 +1219,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Best stocks to trade</div>
                                                         </div>
                                                     </div>
@@ -1141,8 +1230,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Nifty, BankNifty OI compass</div>
                                                         </div>
                                                     </div>
@@ -1151,33 +1240,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="panel_1 bordeaux">
-                        <div class="container-fluid" style="width:100vw;height:100vh">
-                            <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/predictive-chart.svg"
-                                                    loading="lazy" alt="task_list" style="width:25%" />
+                                <div class="col-6 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img"
+                                                    src="img/horizontal_scroll/images/predictive-chart.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-10">
-                                                <div class="container" style="padding-left: 350px;">
+                                            <div class="col-12 col_right">
+                                                <div class="container padding_left" style="padding-left: 25%">
                                                     <div class="my-3 row">
                                                         <div class="col-1 d-flex align-items-center">
                                                             <img src="img/horizontal_scroll/images/check.svg"
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Moneyflux - Trend checker</div>
                                                         </div>
                                                     </div>
@@ -1187,9 +1268,9 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
-                                                                Identify trends and changes early on</div>
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Identify trends & changes early on</div>
                                                         </div>
                                                     </div>
                                                     <div class="my-3 row">
@@ -1198,8 +1279,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Learning from others mistakes</div>
                                                         </div>
                                                     </div>
@@ -1207,10 +1288,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
                                 </div>
                             </div>
                         </div>
@@ -1221,13 +1298,16 @@
                                 <div class="col-12" style="height:100vh">
                                     <div class="container d-flex justify-content-center align-content-center"
                                         style="height:100vh">
-                                        <div class="my-4 row py-4 d-flex justify-content-center align-content-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-content-center border_color">
                                             <div class="col-5">
-                                                <span style="font-size: xxx-large;font-weight: 400;">Get live market
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Get live market
                                                     support from otherpro traders and ready made analysis 24X7</span>
                                             </div>
                                             <div class="mt-5 col-11">
-                                                <span style="font-size: xxx-large;font-weight: 900;"> >> Step 3</span>
+                                                <span class="text_size" style="font-size: xx-large;font-weight: 900;">
+                                                    >> Step 3</span>
                                             </div>
                                         </div>
                                     </div>
@@ -1237,36 +1317,30 @@
                     </section>
                 </div>
             </div>
-            <hr class="my-0 divider">
-            <div id="pinContainer_2">
+            <div id="pinContainer_2" style="color:#000d47">
                 <div id="slideContainer_2">
                     <section class="panel blue">
                         <div class="container-fluid" style="width:100vw;height:100vh">
                             <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/citizens.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/citizens.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 900;">Step 3:</span>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 900;">Step 3:</span>
                                             </div>
-                                            <div class="col-9">
-                                                <span style="font-size: xx-large;font-weight: 600;">TCI community of Pro
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">TCI community of Pro
                                                     traders & get live market trade ideas</span>
-                                            </div>
-                                            <div class="col-9">
-                                                <img src="img/horizontal_scroll/images/arrow.svg" loading="lazy"
-                                                    alt="task_list" style="width:12%" />
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
                                 </div>
                             </div>
                         </div>
@@ -1274,23 +1348,24 @@
                     <section class="panel turqoise">
                         <div class="container-fluid" style="width:100vw;height:100vh">
                             <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/target_1.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                <div class="col-6 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/target_1.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-10">
-                                                <div class="container" style="padding-left: 350px;">
+                                            <div class="col-12">
+                                                <div class="container padding_left" style="padding-left: 25%">
                                                     <div class="my-3 row">
                                                         <div class="col-1 d-flex align-items-center">
                                                             <img src="img/horizontal_scroll/images/check.svg"
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Get Live trade signals</div>
                                                         </div>
                                                     </div>
@@ -1300,8 +1375,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Get strategy of pro traders</div>
                                                         </div>
                                                     </div>
@@ -1311,8 +1386,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Get Pro trader's trading plan</div>
                                                         </div>
                                                     </div>
@@ -1321,33 +1396,25 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-                    <section class="panel green">
-                        <div class="container-fluid" style="width:100vw;height:100vh">
-                            <div class="row" style="width:100vw;height:100vh">
-                                <div class="col-10 d-flex justify-content-end" style="height:100vh">
-                                    <div class="container d-flex justify-content-end align-items-center">
-                                        <div class="my-4 row py-4 d-flex justify-content-end align-items-center">
-                                            <div class="mb-5 col-9">
-                                                <img src="img/horizontal_scroll/images/marketing-strategy.svg"
-                                                    loading="lazy" alt="task_list" style="width:25%" />
+                                <div class="col-6 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img"
+                                                    src="img/horizontal_scroll/images/marketing-strategy.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
                                             </div>
-                                            <div class="col-10">
-                                                <div class="container" style="padding-left: 350px;">
+                                            <div class="col-12 col_right">
+                                                <div class="container padding_left" style="padding-left: 25%;">
                                                     <div class="my-3 row">
                                                         <div class="col-1 d-flex align-items-center">
                                                             <img src="img/horizontal_scroll/images/check.svg"
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Get Daily analysis</div>
                                                         </div>
                                                     </div>
@@ -1357,8 +1424,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Best trading setups</div>
                                                         </div>
                                                     </div>
@@ -1368,8 +1435,8 @@
                                                                 loading="lazy" alt="task_list" style="width:100%" />
                                                         </div>
                                                         <div class="col-auto justify-content-start">
-                                                            <div
-                                                                style="text-align: left;font-size: xx-large;font-weight: 600;">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
                                                                 Learning from others mistakes</div>
                                                         </div>
                                                     </div>
@@ -1377,10 +1444,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-2 d-flex align-items-center">
-                                    <img src="img/horizontal_scroll/images/scroll.svg" loading="lazy" alt="task_list"
-                                        style="width:35%" />
                                 </div>
                             </div>
                         </div>
@@ -1391,13 +1454,507 @@
                                 <div class="col-12" style="height:100vh">
                                     <div class="container d-flex justify-content-center align-content-center"
                                         style="height:100vh">
-                                        <div class="my-4 row py-4 d-flex justify-content-center align-content-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-content-center border_color">
+                                            <div class="col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/send-money.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="mt-5 col-12">
+                                                <span class="text_size" class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Now you have
+                                                    everything to be a Pro trader.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <div id="Mobile_pinContainer" style="color:#000d47">
+                <div id="Mobile_slideContainer">
+                    <section class="mobile_panel blue">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/task-list.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 900;">Step 1:</span>
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="text_size" style="font-size: xx-large;font-weight: 500;">We
+                                                    provide you right
+                                                    methodology</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel turqoise">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/strategy.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="container padding_left" style="padding-left: 25%">
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Proven
+                                                                backtested strategy</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Clear
+                                                                entry and exit rules</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Market
+                                                                conditions adaptability</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel turqoise">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-end" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/growth_1.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12 col_right">
+                                                <div class="container padding_left" style="padding-left: 25%">
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Consistent profitability</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Small losses - Big profits</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                All these builds confidence</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel bordeaux">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-content-center"
+                                        style="height:100vh">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-content-center border_color">
                                             <div class="col-5">
-                                                <img src="img/horizontal_scroll/images/send-money.svg" loading="lazy"
-                                                    alt="task_list" style="width:25%" />
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Time to find the
+                                                    right trade setups in the live market at the right time</span>
                                             </div>
                                             <div class="mt-5 col-11">
-                                                <span style="font-size: xxx-large;font-weight: 900;">Now you have
+                                                <span class="text_size" style="font-size: xx-large;font-weight: 900;">
+                                                    >> Step 2</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="Mobile_pinContainer_1" style="color:#000d47">
+                <div id="Mobile_slideContainer_1">
+                    <section class="mobile_panel_1 blue">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img"
+                                                    src="img/horizontal_scroll/images/Untitled_design.webp"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 900;">Step 2: <br /> Master
+                                                    Tool Tredcode</span>
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Designed & developed
+                                                    by TCI to find right trading opportunity at right time.
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel_1 green">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/target_3.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="container padding_left" style="padding-left: 25%">
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Track big players activity</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Best stocks to trade</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Nifty, BankNifty OI compass</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel_1 green">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img"
+                                                    src="img/horizontal_scroll/images/predictive-chart.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12 col_right">
+                                                <div class="container padding_left" style="padding-left: 25%">
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Moneyflux - Trend checker</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Identify trends & changes early on</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Learning from others mistakes</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel_1 yellow">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-content-center"
+                                        style="height:100vh">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-content-center border_color">
+                                            <div class="col-5">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Get live market
+                                                    support from otherpro traders and ready made analysis 24X7</span>
+                                            </div>
+                                            <div class="mt-5 col-11">
+                                                <span class="text_size" style="font-size: xx-large;font-weight: 900;">
+                                                    >> Step 3</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div id="Mobile_pinContainer_2" style="color:#000d47">
+                <div id="Mobile_slideContainer_2">
+                    <section class="mobile_panel blue">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/citizens.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 900;">Step 3:</span>
+                                            </div>
+                                            <div class="col-12">
+                                                <span class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">TCI community of Pro
+                                                    traders & get live market trade ideas</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel turqoise">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/target_1.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="container padding_left" style="padding-left: 25%">
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Get Live trade signals</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Get strategy of pro traders</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Get Pro trader's trading plan</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel turqoise">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12 d-flex justify-content-center" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-items-center">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-items-center border_color">
+                                            <div class="mb-5 col-12">
+                                                <img class="logo_img"
+                                                    src="img/horizontal_scroll/images/marketing-strategy.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="col-12 col_right">
+                                                <div class="container padding_left" style="padding-left: 25%;">
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Get Daily analysis</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Best trading setups</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="my-3 row">
+                                                        <div class="col-1 d-flex align-items-center">
+                                                            <img src="img/horizontal_scroll/images/check.svg"
+                                                                loading="lazy" alt="task_list" style="width:100%" />
+                                                        </div>
+                                                        <div class="col-auto justify-content-start">
+                                                            <div class="text_size"
+                                                                style="text-align: left;font-size: xx-large;font-weight: 500;">
+                                                                Learning from others mistakes</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="mobile_panel bordeaux">
+                        <div class="container-fluid" style="width:100vw;height:100vh">
+                            <div class="row" style="width:100vw;height:100vh">
+                                <div class="col-12" style="height:100vh">
+                                    <div class="container d-flex justify-content-center align-content-center"
+                                        style="height:100vh">
+                                        <div
+                                            class="my-4 row py-4 d-flex justify-content-center align-content-center border_color">
+                                            <div class="col-12">
+                                                <img class="logo_img" src="img/horizontal_scroll/images/send-money.svg"
+                                                    loading="lazy" alt="task_list" style="width:20%" />
+                                            </div>
+                                            <div class="mt-5 col-12">
+                                                <span class="text_size" class="text_size"
+                                                    style="font-size: xx-large;font-weight: 500;">Now you have
                                                     everything to be a Pro trader.</span>
                                             </div>
                                         </div>
@@ -3249,12 +3806,16 @@
 
             // define movement of panels
             var wipeAnimation = new TimelineMax()
+                // animate to first panel
+                .to("#slideContainer", 1, { x: "-0%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#slideContainer", 1, { x: "-33.33%" })
                 // animate to second panel
-                .to("#slideContainer", 1, { x: "-25%" })	// move in to first panel           
+                .to("#slideContainer", 1, { x: "-33.33%" })
                 // animate to third panel                        
-                .to("#slideContainer", 1, { x: "-50%" })
-                // animate to forth panel                        
-                .to("#slideContainer", 1, { x: "-75%" })
+                .to("#slideContainer", 1, { x: "-66.67%" })
+                // animate to third panel                        
+                .to("#slideContainer", 1, { x: "-66.67%" })
 
             // create scene to pin and link animation
             new ScrollMagic.Scene({
@@ -3274,14 +3835,16 @@
 
             // define movement of panels
             var wipeAnimation_1 = new TimelineMax()
+                // animate to first panel
+                .to("#slideContainer_1", 1, { x: "-0%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#slideContainer_1", 1, { x: "-33.33%" })
                 // animate to second panel
-                .to("#slideContainer_1", 1, { x: "-20%" })	// move in to first panel           
+                .to("#slideContainer_1", 1, { x: "-33.33%" })
                 // animate to third panel                        
-                .to("#slideContainer_1", 1, { x: "-40%" })
-                // animate to forth panel                        
-                .to("#slideContainer_1", 1, { x: "-60%" })
-                // animate to fifth panel                        
-                .to("#slideContainer_1", 1, { x: "-80%" })
+                .to("#slideContainer_1", 1, { x: "-66.67%" })
+                // animate to third panel                        
+                .to("#slideContainer", 1, { x: "-66.67%" })
 
             // create scene to pin and link animation
             new ScrollMagic.Scene({
@@ -3301,12 +3864,16 @@
 
             // define movement of panels
             var wipeAnimation_2 = new TimelineMax()
+                // animate to first panel
+                .to("#slideContainer_2", 1, { x: "-0%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#slideContainer_2", 1, { x: "-33.33%" })
                 // animate to second panel
-                .to("#slideContainer_2", 1, { x: "-25%" })	// move in to first panel           
+                .to("#slideContainer_2", 1, { x: "-33.33%" })
                 // animate to third panel                        
-                .to("#slideContainer_2", 1, { x: "-50%" })
-                // animate to forth panel                        
-                .to("#slideContainer_2", 1, { x: "-75%" })
+                .to("#slideContainer_2", 1, { x: "-66.67%" })
+                // animate to third panel                        
+                .to("#slideContainer", 1, { x: "-66.67%" })
 
             // create scene to pin and link animation
             new ScrollMagic.Scene({
@@ -3321,6 +3888,108 @@
         });
     </script>
 
+    <script>
+        $(function () { // wait for document ready
+            // init
+            var mobile_controller = new ScrollMagic.Controller();
+
+            // define movement of panels
+            var mobile_wipeAnimation = new TimelineMax()
+                // animate to first panel
+                .to("#Mobile_slideContainer", 1, { x: "-0%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#Mobile_slideContainer", 1, { x: "-25%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer", 1, { x: "-25%" })                
+                // animate to first panel
+                .to("#Mobile_slideContainer", 1, { x: "-50%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#Mobile_slideContainer", 1, { x: "-50%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer", 1, { x: "-75%" })                
+                // animate to second panel
+                .to("#Mobile_slideContainer", 1, { x: "-75%" })
+
+            // create scene to pin and link animation
+            new ScrollMagic.Scene({
+                triggerElement: "#Mobile_pinContainer",
+                triggerHook: "onLeave",
+                duration: "300%"
+            })
+                .setPin("#Mobile_pinContainer")
+                .setTween(mobile_wipeAnimation)
+                .addIndicators() // add indicators (requires plugin)
+                .addTo(mobile_controller);
+
+
+
+            // init
+            var mobile_controller_1 = new ScrollMagic.Controller();
+
+            // define movement of panels
+            var mobile_wipeAnimation_1 = new TimelineMax()
+                // animate to first panel
+                .to("#Mobile_slideContainer_1", 1, { x: "-0%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#Mobile_slideContainer_1", 1, { x: "-25%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer_1", 1, { x: "-25%" })                
+                // animate to first panel
+                .to("#Mobile_slideContainer_1", 1, { x: "-50%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#Mobile_slideContainer_1", 1, { x: "-50%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer_1", 1, { x: "-75%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer_1", 1, { x: "-75%" })
+
+
+            // create scene to pin and link animation
+            new ScrollMagic.Scene({
+                triggerElement: "#Mobile_pinContainer_1",
+                triggerHook: "onLeave",
+                duration: "300%"
+            })
+                .setPin("#Mobile_pinContainer_1")
+                .setTween(mobile_wipeAnimation_1)
+                .addIndicators() // add indicators (requires plugin)
+                .addTo(mobile_controller_1);
+
+
+
+            // init
+            var mobile_controller_2 = new ScrollMagic.Controller();
+
+            // define movement of panels
+            var mobile_wipeAnimation_2 = new TimelineMax()
+                // animate to first panel
+                .to("#Mobile_slideContainer_2", 1, { x: "-0%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#Mobile_slideContainer_2", 1, { x: "-25%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer_2", 1, { x: "-25%" })                
+                // animate to first panel
+                .to("#Mobile_slideContainer_2", 1, { x: "-50%" })	// move in to first panel           
+                // animate to second panel                        
+                .to("#Mobile_slideContainer_2", 1, { x: "-50%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer_2", 1, { x: "-75%" })
+                // animate to second panel
+                .to("#Mobile_slideContainer_2", 1, { x: "-75%" })
+
+
+            // create scene to pin and link animation
+            new ScrollMagic.Scene({
+                triggerElement: "#Mobile_pinContainer_2",
+                triggerHook: "onLeave",
+                duration: "300%"
+            })
+                .setPin("#Mobile_pinContainer_2")
+                .setTween(mobile_wipeAnimation_2)
+                .addIndicators() // add indicators (requires plugin)
+                .addTo(mobile_controller_2);
+        });
+    </script>
 
     <script>
         jQuery(document).ready(function ($) {

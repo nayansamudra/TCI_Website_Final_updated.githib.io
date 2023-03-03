@@ -162,7 +162,8 @@ $(document).ready(function () {
 
   $(window).scroll(function (event) {
     horizontal_scroll_1_start = $("#pinContainer").offset().top == $(window).scrollTop()
-    console.log("horizontal_scroll_1_start", horizontal_scroll_1_start)
+    // horizontal_scroll_2_start = $(".mySwiper").offset().top == $(window).scrollTop()
+    // console.log("horizontal_scroll_2_start", horizontal_scroll_2_start)
     if ($(window).width() < 413) {
       if (horizontal_scroll_1_start == true) {
         $('body').css('overflow-x', 'visible !important')
